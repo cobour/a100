@@ -1,0 +1,267 @@
+# source, temp and target folders are relative to folder of this config file
+sourceFolder: ./
+tempFolder: ./converted
+targetFolder: ../uae/dh0
+# asmWorkingFolder is relative to amiga/common/data-tool/app folder
+asmWorkingFolder: ../../../a100
+# index filenames are relative to folder of this config file
+indexFilename: ../files_index.i
+asmIndexFilename: ../asm_files_index.i
+# filenames of source files are relative to sourceFolder
+targetFiles:
+
+  - filename: C000
+    description: main_code_file
+    memoryType: OTHER
+    doZip: false
+    codeFile: true
+    sources:
+      - filename: ../a100.asm
+        id: A100
+        defines:
+          - RELEASE
+          - USE_TRACKDISK
+
+  - filename: F000
+    description: ingame_chip
+    memoryType: CHIP
+    sources:
+      - filename: gfx/ingame_screen_2a.iff
+        id: SCRN
+        withMask: false
+      - filename: gfx/font16_2c.iff
+        id: FONT
+        flattenedTileFormat: 16x12
+        flattenedReducedTileCount: 59
+      - filename: gfx/bricks_big_2.iff
+        id: BRBG
+      - filename: gfx/bricks_small_2.iff
+        id: BRSM
+        invertMask: true
+      - filename: gfx/active_selector_2.iff
+        id: ASEL
+      - filename: music/peace_of_mind.mod
+        id: MS01
+      - filename: sfx/select.wav
+        id: SSEL
+        volume: 64
+        priority: 48
+      - filename: sfx/unselect.wav
+        id: SUNS
+        volume: 64
+        priority: 48
+      - filename: sfx/step.wav
+        id: SSTP
+        volume: 64
+        priority: 32
+      - filename: sfx/placed.wav
+        id: SPLC
+        volume: 64
+        priority: 48
+      - filename: sfx/error.wav
+        id: SERR
+        volume: 64
+        priority: 48
+      - filename: sfx/clear_row_column.wav
+        id: SCLR
+        volume: 64
+        priority: 64
+      - filename: sfx/gameover.wav
+        id: SGOV
+        volume: 64
+        priority: 64
+      - filename: sfx/alarm.wav
+        id: SALM
+        volume: 64
+        priority: 64
+      - filename: ../src/ingame/copperlist.asm
+        id: IGCL
+
+  - filename: F001
+    description: ingame_other
+    memoryType: OTHER
+    relatedFile: F000
+    sources:
+      - filename: gfx/ingame_screen_2a.iff
+        id: COLS
+        colorsOnly: true
+      - filename: music/peace_of_mind.mod
+        id: MP01
+      - filename: tiled/brick_3x3_big.tmx
+        id: B01B
+      - filename: tiled/brick_3x3_small.tmx
+        id: B01S
+      - filename: tiled/brick_2x2_big.tmx
+        id: B02B
+      - filename: tiled/brick_2x2_small.tmx
+        id: B02S
+      - filename: tiled/brick_1x1_big.tmx
+        id: B03B
+      - filename: tiled/brick_1x1_small.tmx
+        id: B03S
+      - filename: tiled/brick_5x1_big.tmx
+        id: B04B
+      - filename: tiled/brick_5x1_small.tmx
+        id: B04S
+      - filename: tiled/brick_4x1_big.tmx
+        id: B05B
+      - filename: tiled/brick_4x1_small.tmx
+        id: B05S
+      - filename: tiled/brick_3x1_big.tmx
+        id: B06B
+      - filename: tiled/brick_3x1_small.tmx
+        id: B06S
+      - filename: tiled/brick_2x1_big.tmx
+        id: B07B
+      - filename: tiled/brick_2x1_small.tmx
+        id: B07S
+      - filename: tiled/brick_1x2_big.tmx
+        id: B08B
+      - filename: tiled/brick_1x2_small.tmx
+        id: B08S
+      - filename: tiled/brick_1x3_big.tmx
+        id: B09B
+      - filename: tiled/brick_1x3_small.tmx
+        id: B09S
+      - filename: tiled/brick_1x4_big.tmx
+        id: B10B
+      - filename: tiled/brick_1x4_small.tmx
+        id: B10S
+      - filename: tiled/brick_1x5_big.tmx
+        id: B11B
+      - filename: tiled/brick_1x5_small.tmx
+        id: B11S
+      - filename: tiled/brick_2x2_a1_big.tmx
+        id: B12B
+      - filename: tiled/brick_2x2_a1_small.tmx
+        id: B12S
+      - filename: tiled/brick_2x2_a2_big.tmx
+        id: B13B
+      - filename: tiled/brick_2x2_a2_small.tmx
+        id: B13S
+      - filename: tiled/brick_2x2_a3_big.tmx
+        id: B14B
+      - filename: tiled/brick_2x2_a3_small.tmx
+        id: B14S
+      - filename: tiled/brick_2x2_a4_big.tmx
+        id: B15B
+      - filename: tiled/brick_2x2_a4_small.tmx
+        id: B15S
+      - filename: tiled/brick_3x3_a1_big.tmx
+        id: B16B
+      - filename: tiled/brick_3x3_a1_small.tmx
+        id: B16S
+      - filename: tiled/brick_3x3_a2_big.tmx
+        id: B17B
+      - filename: tiled/brick_3x3_a2_small.tmx
+        id: B17S
+      - filename: tiled/brick_3x3_a3_big.tmx
+        id: B18B
+      - filename: tiled/brick_3x3_a3_small.tmx
+        id: B18S
+      - filename: tiled/brick_3x3_a4_big.tmx
+        id: B19B
+      - filename: tiled/brick_3x3_a4_small.tmx
+        id: B19S
+
+  - filename: F002
+    description: highscores_chip
+    memoryType: CHIP
+    sources:
+      - filename: gfx/highscores_screen_K2.iff
+        id: SCRN
+        withMask: false
+      - filename: music/spearhead.mod
+        id: MS02
+      - filename: ../src/highscores/hs_copperlist.asm
+        id: HSCL
+      - filename: gfx/font16_2c.iff
+        id: FONT
+        flattenedTileFormat: 16x12
+      - filename: sfx/tick.wav
+        id: STIC
+        volume: 64
+        priority: 48
+      - filename: sfx/print.wav
+        id: SPRN
+        volume: 64
+        priority: 48
+      - filename: sfx/delete.wav
+        id: SDEL
+        volume: 64
+        priority: 48
+      - filename: sfx/enter.wav
+        id: SENT
+        volume: 64
+        priority: 48
+      - filename: sfx/error.wav
+        id: SERR
+        volume: 64
+        priority: 48
+
+  - filename: F003
+    description: highscores_other
+    memoryType: OTHER
+    relatedFile: F002
+    sources:
+      - filename: gfx/highscores_screen_K2.iff
+        id: COLS
+        colorsOnly: true
+      - filename: music/spearhead.mod
+        id: MP02
+
+  - filename: F004
+    description: mainmenu_chip
+    memoryType: CHIP
+    sources:
+      - filename: gfx/mainmenu_screen_3b.iff
+        id: SCRN
+        withMask: false
+      - filename: gfx/font16_2c.iff
+        id: FONT
+        flattenedTileFormat: 16x12
+      - filename: music/space_odyssey.mod
+        id: MS03
+      - filename: ../src/mainmenu/mm_copperlist.asm
+        id: MMCL
+      - filename: sfx/select.wav
+        id: SSEL
+        volume: 64
+        priority: 48
+      - filename: sfx/step.wav
+        id: SSTP
+        volume: 64
+        priority: 32
+      - filename: sfx/error.wav
+        id: SERR
+        volume: 64
+        priority: 48
+
+  - filename: F005
+    description: mainmenu_other
+    memoryType: OTHER
+    relatedFile: F004
+    sources:
+      - filename: gfx/mainmenu_screen_3b.iff
+        id: COLS
+        colorsOnly: true
+      - filename: music/space_odyssey.mod
+        id: MP03
+
+  - filename: H000
+    description: highscores
+    memoryType: OTHER
+    doZip: false
+    skipIndex: true
+    sources:
+      - filename: ../src/highscores/hs_data.asm
+        id: HIGH
+
+  - filename: S000
+    description: savegame
+    memoryType: OTHER
+    doZip: false
+    skipIndex: true
+    sources:
+      - filename: ../src/system/savegame_data.asm
+        id: SAVE
